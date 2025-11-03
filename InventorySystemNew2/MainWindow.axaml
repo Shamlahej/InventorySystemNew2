@@ -1,0 +1,25 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="InventorySystemNew2.MainWindow"
+        Width="700" Height="450"
+        Title="Inventory System + Item Sorter Robot">
+
+    <StackPanel Margin="20" Spacing="12">
+        <TextBlock Text="Item Sorter Robot – Order Processing" FontSize="20"/>
+
+        <Button Content="Process next order"
+                Width="220"
+                Height="40"
+                Click="ProcessNextOrder_OnClick"/>
+
+        <Border BorderBrush="#CCC" BorderThickness="1" Padding="10">
+            <ScrollViewer Height="280">
+                <TextBlock x:Name="StatusMessages"
+                           TextWrapping="Wrap"
+                           FontFamily="Consolas"
+                           FontSize="14"/>
+            </ScrollViewer>
+        </Border>
+    </StackPanel>
+</Window>
+
