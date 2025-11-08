@@ -1,25 +1,43 @@
+<!--Dette er hovedvinduet i vores Avalonia-app. Her beskriver vi layoutet (hvordan det ser ud), mens logikken ligger i MainWindow.axaml.cs.-->
+
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="InventorySystemNew2.MainWindow"
         Width="700" Height="450"
         Title="Inventory System + Item Sorter Robot">
 
-    <StackPanel Margin="20" Spacing="12">
-        <TextBlock Text="Item Sorter Robot – Order Processing" FontSize="20"/>
+<!-- StackPanel lægger elementer under hinanden (vertikalt). Det gør det nemt at få en enkel GUI uden at tænke på avancerede layouts. Margin giver luft ind til kanten, Spacing giver luft mellem elementerne.-->
+    
+<StackPanel Margin="20" Spacing="12">
 
-        <Button Content="Process next order"
-                Width="220"
-                Height="40"
-                Click="ProcessNextOrder_OnClick"/>
+<!-- Overskrift øverst i vinduet. Bare ren tekst, der fortæller brugeren, hvad programmet handler om.-->
+        
+<TextBlock Text="Item Sorter Robot – Order Processing"
+        FontSize="20"/>
 
-        <Border BorderBrush="#CCC" BorderThickness="1" Padding="10">
-            <ScrollViewer Height="280">
-                <TextBlock x:Name="StatusMessages"
-                           TextWrapping="Wrap"
-                           FontFamily="Consolas"
-                           FontSize="14"/>
+<!-- Denne knap starter hele processen. Når man klikker på den, kaldes metoden ProcessNextOrder_OnClick i MainWindow.axaml.cs. Metoden finder næste ordre og sender robotten ud for at hente varerne.-->
+        
+<Button Content="Process next order"
+        Width="220"
+        Height="40"
+        Click="ProcessNextOrder_OnClick"/>
+
+<!-- Border bruges til at lave en ramme omkring statusområdet, så det ser mere adskilt og overskueligt ud.-->
+        
+<Border BorderBrush="#CCC"
+        BorderThickness="1"
+        Padding="10">
+
+<!-- ScrollViewer gør det muligt at rulle i teksten, hvis der kommer mange statusbeskeder. Det er vigtigt, når vi viser én linje pr. robot-aktion.-->
+<ScrollViewer Height="280">
+
+<!-- Dette TextBlock er der, hvor vi skriver alle statusbeskeder. x:Name gør, at vi kan tilgå det fra C#-koden.(StatusMessages i MainWindow.axaml.cs).
+TextWrapping="Wrap" gør, at lange linjer går videre på næste linje. FontFamily="Consolas" giver monospace-skrift, så log-linjer er nemme at læse.-->
+        <TextBlock x:Name="StatusMessages"
+        TextWrapping="Wrap"
+        FontFamily="Consolas"
+        FontSize="14"/>
             </ScrollViewer>
         </Border>
     </StackPanel>
 </Window>
-
